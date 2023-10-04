@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Tiendita.Models.Productos>
+
+@{
+    ViewBag.Title = "Base de Datos de Productos";
+}
+
+<h2 class="display-2">Base de Datos</h2>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+           ID del Producto
+        </th>
+        <th>
+           Productos
+        </th>
+        <th>
+           Precio
+        </th>
+        <th>
+            Cantidad en inventario
+        </th>
+        <th>
+            Proxima Fecha de Reabastecimiento
+        </th>
+        <th>
+            Departamento
+        </th>
+        <th>
+            Acciones
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idProducto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombreProducto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.precio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.inventario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaReabastecimiento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Departamentos.nombreDepartamento)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.idProducto }, new {@class = "btn btn-primary"}) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.idProducto}, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>
